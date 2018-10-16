@@ -3,17 +3,19 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { CardComponent } from './card/card.component';
+import { DetailsComponent } from './details/details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CardComponent
+    CardComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [CardComponent],
+  entryComponents: [CardComponent, DetailsComponent],
 })
 export class AppModule { }

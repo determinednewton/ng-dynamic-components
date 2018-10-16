@@ -1,5 +1,6 @@
 import { Component, ComponentFactoryResolver, ViewChild, ViewContainerRef } from '@angular/core';
 import { CardComponent } from './card/card.component';
+import { DetailsComponent } from './details/details.component';
 
 @Component({
   selector: 'app-root',
@@ -17,8 +18,16 @@ export class AppComponent {
     this.addCardComponent();
   }
 
+  addComponent(component) {
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(component);
+    this.container.createComponent(componentFactory);
+  }
+
   addCardComponent() {
-    const cardComponentFactory = this.componentFactoryResolver.resolveComponentFactory(CardComponent);
-    this.container.createComponent(cardComponentFactory);
+    this.addComponent(CardComponent);
+  }
+
+  showDetails() {
+    this.addComponent(DetailsComponent);
   }
 }
