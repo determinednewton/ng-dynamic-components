@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ComponentFactoryResolver, ViewChild, ViewContainerRef } from '@angular/core';
+import { CardComponent } from './card/card.component';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ng-dynamic-component';
+  @ViewChild('container', {read: ViewContainerRef}) container: ViewContainerRef;
+
+  constructor(private componentFactoryResolver: ComponentFactoryResolver) {
+  }
+
+  loadMore() {
+    this.addCardComponent();
+  }
+
+  addCardComponent() {
+    const cardComponentFactory = this.componentFactoryResolver.resolveComponentFactory(CardComponent);
+    this.container.createComponent(cardComponentFactory);
+  }
 }
