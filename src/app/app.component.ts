@@ -18,6 +18,10 @@ export class AppComponent {
     this.addCardComponent();
   }
 
+  cleanUp() {
+    this.container.clear();
+  }
+
   addComponent(component) {
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(component);
     this.container.createComponent(componentFactory);
@@ -28,6 +32,12 @@ export class AppComponent {
   }
 
   showDetails() {
+    this.cleanUp();
     this.addComponent(DetailsComponent);
+  }
+
+  showCards() {
+    this.cleanUp();
+    this.addCardComponent();
   }
 }
